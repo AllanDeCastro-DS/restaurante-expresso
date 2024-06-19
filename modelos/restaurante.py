@@ -1,9 +1,10 @@
 from avaliacao import AVALIACAO
+from avaliacao import Avaliacoes
+
 
 class RESTAURANTE:
 
     Restaurantes = []
-    Avaliacoes = []
     def __init__(self,nome,categoria):
         self._nome = nome
         self.categoria = categoria 
@@ -22,7 +23,7 @@ class RESTAURANTE:
         print(f'{"{Nome}".ljust(15)} | {"{Categoria}".ljust(15)} | {"{Ativado}"}')
 
         for i in cls.Restaurantes:
-            return(f'{i.nome.ljust(15)} | {i.categoria.ljust(15)} | {i.ativo()}')
+            return(f'{i._nome.ljust(15)} | {i.categoria.ljust(15)} | {i.ativo()}')
         
 
 
@@ -35,24 +36,23 @@ class RESTAURANTE:
             self._ativo = False 
         
         
-    def receberavaliacoes(self):
-        avaliacaod = AVALIACAO()
-        RESTAURANTE.Avaliacoes.append(avaliacaod)
+    def receber_avaliacoes(self, avaliacao: AVALIACAO):
+        Avaliacoes.append(avaliacao)
+
 
     @classmethod
     def medianotas(cls):
-        notas = [avaliacao.nota for avaliacao in cls.Avaliacoes]
-        media = round(sum(notas) / len(notas)) if len(notas) != 0 else 0
-
-        return f" | {media}"  
+        notas = [avaliacao.nota for avaliacao in Avaliacoes]
+        if notas:
+            media = round(sum(notas) / len(notas), 2)
+            return f" | {media:.2f}/5.0"
+        else:
+            return " | Sem avaliações"
         
 
 
 
 rest1 = RESTAURANTE('allan', 'coiso')
-
-
-
 
 
 

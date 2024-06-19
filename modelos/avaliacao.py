@@ -1,11 +1,14 @@
-
+Avaliacoes = []
 
 
 class AVALIACAO:
-    def __init__(self, nome, nota):
+    def __init__(self, nome: str, nota: float):
+
         self.nome = nome
         self.nota = nota
 
-nota12 = AVALIACAO('1', 2)
-nota122 = AVALIACAO('1', 2)
-nota1222 = AVALIACAO('1', 2)
+
+AV1 = AVALIACAO('a', 2)
+AVs1 = AVALIACAO('a', 2)
+AVd1 = AVALIACAO('a', 2)
+AV21 = AVALIACAO('a', 2)
